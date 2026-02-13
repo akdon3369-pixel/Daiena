@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Daiena ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ff6a88,#ff99ac);
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* Glitter background */
+.glitter{
+  position:fixed;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  opacity:.8;
+  animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:.2; transform:scale(.5);}
+  50%{opacity:1; transform:scale(1.5);}
+}
+
+/* Glowing card */
+.container{
+  background:rgba(255,255,255,0.95);
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,0,90,.4);
+  max-width:420px;
+  position:relative;
+}
+
+h1{
+  color:#ff2d6f;
+  text-shadow:0 0 12px rgba(255,45,111,.6);
+}
+
+img{
+  width:190px;
+  height:190px;
+  border-radius:18px;
+  object-fit:cover;
+  margin-top:10px;
+  box-shadow:0 0 25px rgba(255,0,90,.5);
+}
+
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+}
+
+#yes{
+  background:#ff2d6f;
+  color:white;
+  box-shadow:0 0 20px rgba(255,45,111,.8);
+}
+
+#no{
+  background:#eee;
+  position:absolute;
+}
+
+/* Heart explosion */
+.heart{
+  position:fixed;
+  color:#ff2d6f;
+  font-size:20px;
+  animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+  to{
+    transform:translate(var(--x), var(--y)) scale(0);
+    opacity:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="YOUR-MUSIC-LINK.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+  <h1>Daiena ❤️</h1>
+  <p>Will you be my Valentine?</p>
+
+  <img src="YOUR-PHOTO-LINK.jpg">
+
+  <br>
+
+  <button id="yes" onclick="love()">YES 💕</button>
+  <button id="no" onmouseover="move()">NO 😭</button>
+</div>
+
+<script>
+
+/* Moving NO button */
+function move(){
+  const btn = document.getElementById("no");
+  btn.style.top = Math.random()*300 + "px";
+  btn.style.left = Math.random()*300 + "px";
+}
+
+/* Heart explosion + message */
+function love(){
+
+  // explosion hearts
+  for(let i=0;i<40;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+
+    let x=(Math.random()-0.5)*600+"px";
+    let y=(Math.random()-0.5)*600+"px";
+    heart.style.setProperty("--x",x);
+    heart.style.setProperty("--y",y);
+
+    heart.style.left="50%";
+    heart.style.top="50%";
+
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),1000);
+  }
+
+  setTimeout(()=>{
+    document.body.innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#ff6a88;color:white;font-family:sans-serif;text-align:center;padding:20px;">
+      <div>
+        <h1 style="font-size:40px;">Yeh hui na baat babes 🥹❤️</h1>
+        <p style="font-size:24px;margin-top:15px;">
+        I don’t want uh to be my valentine<br>
+        but my <b>Begum G</b> 🥱❤️
+        </p>
+      </div>
+    </div>`;
+  },800);
+}
+
+/* Create glitter */
+for(let i=0;i<80;i++){
+  let g=document.createElement("div");
+  g.className="glitter";
+  g.style.left=Math.random()*100+"vw";
+  g.style.top=Math.random()*100+"vh";
+  g.style.animationDelay=Math.random()*3+"s";
+  document.body.appendChild(g);
+}
+
+</script>
+
+</body>
+</html>
